@@ -1,25 +1,63 @@
 import { useState } from "react";
 
-function Formulario() {
+function Formulario({ pacientes, setPacientes }) {
   const [nombre, setNombre] = useState("")
   const [propietario, setPropietario] = useState("")
   const [email, setEmail] = useState("")
   const [fecha, setFecha] = useState("")
   const [sintomas, setSintomas] = useState("")
+  const [error, setError] = useState(false)
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("enviando formulario")
+
+
+    // Validacin de formulario
+    // Comprobar que no existan campos vacios
+    if([nombre, propietario, email, fecha, sintomas].includes("")){
+      console.log("Al menos un campo vacio")
+      setError(true)
+      return
+
+    }
+    setError(false)
+
+    //objeto paciente
+
+    const objetoPaciente = {
+
+      nombre, 
+      propietario,
+      email,
+      fecha,
+      sintomas
+    }
+
+    
+
+    setPacientes([...pacientes, objetoPaciente])
+
+    //reiniciar formulario
+    setNombre("")
+    setPropietario("")
+    setEmail("")
+    setFecha("")
+    setSintomas("")
+    
   }
 
   
   return (
-    <div className=" md:w-1/2 lg:w-2/5 ">
+    <div className=" md:w-1/2 lg:w-2/5 mx-3">
       <h2 className="font-black text-3xl text-center">Seguimiento Pacientes</h2>
       <p className="text-xl mt-5 text-center mb-10">
         Anade pacientes y {""}{" "}
         <span className="text-indigo-600 font-bold">Administralos</span>
       </p>
+      {error && (<div className="bg-red-800 text-white text-center p-3 uppercase font-bold mb-3 rounded-md">
+        <p> Todos los campos son obligatorios </p>
+        </div>
+        ) }
       <form 
       onSubmit={handleSubmit}
       className=" bg-white shadow-md rounded-lg py-10 p-5 mb-10">
