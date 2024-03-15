@@ -1,7 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function Formulario() {
   const [nombre, setNombre] = useState("")
+  const [propietario, setPropietario] = useState("")
+  const [email, setEmail] = useState("")
+  const [fecha, setFecha] = useState("")
+  const [sintomas, setSintomas] = useState("")
   
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -49,6 +53,8 @@ function Formulario() {
             type="text"
             placeholder="Nombre del propietario"
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+            value={propietario}
+            onChange={ (e) => setPropietario(e.target.value)}
           />
         </div>
 
@@ -64,6 +70,8 @@ function Formulario() {
             type="email"
             placeholder="email contacto propietario"
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+            value={email}
+            onChange={ (e) => setEmail(e.target.value)}
           />
         </div>
 
@@ -78,6 +86,8 @@ function Formulario() {
             id="alta"
             type="date"
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+            value={fecha}
+            onChange={ (e) => setFecha(e.target.value)}
           />
         </div>
 
@@ -92,6 +102,8 @@ function Formulario() {
             id="sintomas"
             placeholder="Describe los sintomas"
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+            value={sintomas}
+            onChange={ (e) => setSintomas(e.target.value)}
           />
         </div>
         <input type="submit" 
