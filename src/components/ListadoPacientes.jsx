@@ -2,7 +2,7 @@ import Paciente from "./Paciente";
 
 function ListadoPacientes() {
   return (
-    <div className=" md:w-1/2 lg:3/5 ">
+    <div className=" md:w-1/2 lg:w-3/5 ">
       <h1 className=" font-black text-3xl text-center">
         Listado  Pacientes
       </h1>
