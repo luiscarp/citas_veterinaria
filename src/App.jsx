@@ -19,7 +19,9 @@ function App() {
         
         
         />
-        <ListadoPacientes />
+        <ListadoPacientes
+        pacientes = {pacientes}
+        />
       </div>
     </div>
   );
